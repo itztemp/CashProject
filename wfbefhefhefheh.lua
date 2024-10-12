@@ -471,12 +471,11 @@ function ServerSwitch()
 		Queued = true
 
 		local ScriptFile = GetDirectory() .. "/AutoCratePaid.lua"
-		local ScriptSaved = game:HttpGet("https://raw.githubusercontent.com/itztemp/Tempcode/main/AutoCratePaid.lua")
+		local ScriptSaved = game:HttpGet("https://raw.githubusercontent.com/itztemp/CashProject/main/wfbefhefhefheh.lua")
 		writefile(ScriptFile, ScriptSaved)
 
 		local Queue = [[getgenv().StartingMoney = ]] .. getgenv().StartingMoney .. [[
 			getgenv().StartingTime = ]] .. getgenv().StartingTime .. [[
-			script_key = "]] .. script_key .. [[";
  			local success, error = pcall(function()
 				loadfile("]] .. ScriptFile .. [[")();
  			end)
