@@ -96,7 +96,6 @@ local Settings = {
 	IncludeMansion              = true,
 	IncludeCargoShip            = true,
 	AutoBoostFPS                = true,
-	HideInCrate                 = false,
 	CollectCash                 = true,
 	AutoOpenSafes               = true,
 	SmallServer                 = true,
@@ -471,11 +470,12 @@ function ServerSwitch()
 		Queued = true
 
 		local ScriptFile = GetDirectory() .. "/AutoCratePaid.lua"
-		local ScriptSaved = game:HttpGet("https://raw.githubusercontent.com/itztemp/CashProject/main/wfbefhefhefheh.lua")
+		local ScriptSaved = game:HttpGet("https://raw.githubusercontent.com/itztemp/Tempcode/main/AutoCratePaid.lua")
 		writefile(ScriptFile, ScriptSaved)
 
 		local Queue = [[getgenv().StartingMoney = ]] .. getgenv().StartingMoney .. [[
 			getgenv().StartingTime = ]] .. getgenv().StartingTime .. [[
+			script_key = "]] .. script_key .. [[";
  			local success, error = pcall(function()
 				loadfile("]] .. ScriptFile .. [[")();
  			end)
@@ -486,7 +486,7 @@ function ServerSwitch()
 					task.wait(1) 
  				end
 
- 				loadstring(game:HttpGet("https://raw.githubusercontent.com/itztemp/CashProject/main/wfbefhefhefheh.lua"))()			
+ 				loadstring(game:HttpGet("https://raw.githubusercontent.com/itztemp/Tempcode/main/AutoCratePaid.lua"))()			
  			end
  		]]
 
@@ -562,9 +562,9 @@ local FragranceUI = CreateInstance("ScreenGui", gethui(), {
 	Name = "Fragrance"
 })
 
-local Holder = CreateInstance("ImageLabel", FarmUI, {
+local Holder = CreateInstance("ImageLabel", FragranceUI, {
 	Name = "Holder",
-	Parent = FarmUI,
+	Parent = FragranceUI,
 	BackgroundTransparency = 1.000,
 	BorderSizePixel = 0,
 	Position = UDim2.new(0.0506075993, 0, 0.655761302, 0),
@@ -998,11 +998,6 @@ end)
 
 AddSwitch("Collect Dropped Cash", Settings.CollectCash, function(bool)
 	Settings.CollectCash = bool
-	SaveFile("AutoCrateSettings.json", HttpService:JSONEncode(Settings))
-end)
-
-AddSwitch("Hide In Crate", Settings.HideInCrate, function(bool)
-	Settings.HideInCrate = bool
 	SaveFile("AutoCrateSettings.json", HttpService:JSONEncode(Settings))
 end)
 
@@ -2266,4 +2261,4 @@ if RobberyData.Mansion.Open then
 end
 
 SetStatus("Switching servers..")
-ServerSwitch()
+ServerSwitch()	
