@@ -470,7 +470,7 @@ function ServerSwitch()
 		Queued = true
 
 		local ScriptFile = GetDirectory() .. "/AutoCratePaid.lua"
-		local ScriptSaved = game:HttpGet("https://raw.githubusercontent.com/itztemp/Tempcode/main/AutoCratePaid.lua")
+		local ScriptSaved = game:HttpGet("https://raw.githubusercontent.com/itztemp/CashProject/refs/heads/main/wfbefhefhefheh.lua")
 		writefile(ScriptFile, ScriptSaved)
 
 		local Queue = [[getgenv().StartingMoney = ]] .. getgenv().StartingMoney .. [[
@@ -486,7 +486,7 @@ function ServerSwitch()
 					task.wait(1) 
  				end
 
- 				loadstring(game:HttpGet("https://raw.githubusercontent.com/itztemp/Tempcode/main/AutoCratePaid.lua"))()			
+ 				loadstring(game:HttpGet("https://raw.githubusercontent.com/itztemp/CashProject/refs/heads/main/wfbefhefhefheh.lua"))()			
  			end
  		]]
 
