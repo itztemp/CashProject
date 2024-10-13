@@ -112,14 +112,9 @@ if SettingsFile then
 	if Success then
 		for i, v in pairs(Data) do
 			Settings[i] = v
-			print("Updated " .. i .. " to " .. tostring(v))
 		end
 	end
 end
-
-table.foreach(Settings, function(i, v)
-	print(i .. ": " .. tostring(v))
-end)
 
 -------------------->> Client Player <<--------------------
 
@@ -823,14 +818,14 @@ local UIListLayout_3 = CreateInstance("UIListLayout", Credits, {
 	SortOrder = Enum.SortOrder.LayoutOrder,
 })
 
-local Fayy = CreateInstance("TextLabel", Credits, {
-	Name = "Fayy",
+local Cezkot = CreateInstance("TextLabel", Credits, {
+	Name = "Cezkot",
 	Parent = Credits,
 	BackgroundTransparency = 1.000,
 	BorderSizePixel = 0,
 	Size = UDim2.new(0, 256, 0, 20),
 	Font = Enum.Font.SourceSansBold,
-	Text = "f4yyzw0rld#0 - Scripting + Interface",
+	Text = "x_ant1#0 - Scripting + Interface",
 	TextColor3 = Color3.fromRGB(255, 255, 255),
 	TextSize = 16.000,
 })
@@ -847,38 +842,14 @@ local Tempy = CreateInstance("TextLabel", Credits, {
 	TextSize = 16.000,
 })
 
-local Veoxn = CreateInstance("TextLabel", Credits, {
-	Name = "Veoxn",
+local ThankYou = CreateInstance("TextLabel", Credits, {
+	Name = "ThankYou",
 	Parent = Credits,
 	BackgroundTransparency = 1.000,
 	BorderSizePixel = 0,
 	Size = UDim2.new(0, 256, 0, 20),
 	Font = Enum.Font.SourceSansBold,
-	Text = "veoxn#0 - Inspiration + Debugging",
-	TextColor3 = Color3.fromRGB(255, 255, 255),
-	TextSize = 16.000,
-})
-
-local Nonreputable = CreateInstance("TextLabel", Credits, {
-	Name = "Nonreputable",
-	Parent = Credits,
-	BackgroundTransparency = 1.000,
-	BorderSizePixel = 0,
-	Size = UDim2.new(0, 256, 0, 20),
-	Font = Enum.Font.SourceSansBold,
-	Text = "nonreputable#0 - Operations Supervisor",
-	TextColor3 = Color3.fromRGB(255, 255, 255),
-	TextSize = 16.000,
-})
-
-local Website = CreateInstance("TextLabel", Credits, {
-	Name = "Website",
-	Parent = Credits,
-	BackgroundTransparency = 1.000,
-	BorderSizePixel = 0,
-	Size = UDim2.new(0, 256, 0, 20),
-	Font = Enum.Font.SourceSansBold,
-	Text = "https://discord.gg/fragrance",
+	Text = "Thank you for using the most racist farm!",
 	TextColor3 = Color3.fromRGB(255, 255, 255),
 	TextSize = 16.000,
 })
@@ -1745,12 +1716,12 @@ local TargetedLocations = {
 local function LoadMap()
 	Workspace.CurrentCamera.CameraType = Enum.CameraType.Scriptable
 	for i, Position in pairs(TargetedLocations) do
-		local TweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0)
+		local TweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0)
 
 		pcall(function()
 			local Tween = TweenService:Create(Workspace.CurrentCamera, TweenInfo, {CFrame = CFrame.new(Position)})
 			Tween:Play() 
-			SetStatus("Rendering position.. (" .. math.floor((i / #TargetedLocations) * 100) .. "%)")
+			SetStatus("Rendering cum.. (" .. math.floor((i / #TargetedLocations) * 100) .. "%)")
 
 			Tween.Completed:Wait()
 		end)
@@ -1775,7 +1746,7 @@ RobberyData.Mansion.Callback = function()
 		ExitVehicle()
 	end
 
-	SetStatus("TPing to Mansion..")
+	SetStatus("TPing to nigga..")
 	local MansionRobbery = Workspace.MansionRobbery
 	local TouchToEnter = MansionRobbery.Lobby.EntranceElevator.TouchToEnter
 	local ElevatorDoor = MansionRobbery.ArrivalElevator.Floors:GetChildren()[1].DoorLeft.InnerModel.Door
@@ -1805,7 +1776,7 @@ RobberyData.Mansion.Callback = function()
 	end
 
 	GetGun()
-	SetStatus("Starting Mansion..")
+	SetStatus("Starting fields..")
 	repeat
 		wait(0.1)
 	until ElevatorDoor.Position.X > 3208
@@ -1831,7 +1802,7 @@ RobberyData.Mansion.Callback = function()
 		return
 	end
 
-	SetStatus("Playing cutscene..")
+	SetStatus("Not paying slaves..")
 	Modules.MansionUtils.getProgressionStateChangedSignal(MansionRobbery):Wait()
 
 	local BodyVelocity = Instance.new("BodyVelocity", Root)
@@ -1926,9 +1897,9 @@ RobberyData.Mansion.Callback = function()
 		end
 	end)
 
-	SetStatus("Killing CEO Boss..")
+	SetStatus("Killing slaves..")
 	while Player.Folder:FindFirstChild("Pistol") and BossCEO and BossCEO:FindFirstChild("HumanoidRootPart") and BossCEO.Humanoid.Health ~= 1 do
-		SetStatus("Killing ceo boss.. (" .. math.floor((OldHealth - BossCEO.Humanoid.Health) / OldHealth * 100) .. "%)")
+		SetStatus("Killing slaves.. (" .. math.floor((OldHealth - BossCEO.Humanoid.Health) / OldHealth * 100) .. "%)")
 		EquipGun(true)
 		task.wait()
 		ShootGun()
@@ -1938,7 +1909,7 @@ RobberyData.Mansion.Callback = function()
 	BodyVelocity:Destroy()
 	EquipGun(false)
 
-	SetStatus("Waiting for reward..")
+	SetStatus("Waiting for cotton..")
 	repeat task.wait() until PlayerGui.AppUI:FindFirstChild("RewardSpinner")
 
 	WaitForReward()
@@ -1949,7 +1920,7 @@ RobberyData.CargoShip.Callback = function()
 	if not Settings.IncludeCargoShip then return end
 	if not GetVehiclePacket() and GetVehicleType() ~= "Heli" then
 		ExitVehicle()
-		SetStatus("Getting a helicopter..")
+		SetStatus("Getting a slave..")
 		for i, v in pairs(Workspace.Vehicles:GetChildren()) do
 			if v.Name == "Heli" and v.PrimaryPart and v.Seat and not v.Seat.Player.Value and not v:GetAttribute("Locked") and not Raycast(v.Seat.Position, RayDirections.High) then
 				VehicleTP(v.PrimaryPart.CFrame, true)
@@ -1975,7 +1946,7 @@ RobberyData.CargoShip.Callback = function()
 	end
 
 	if not GetVehiclePacket() then
-		SetStatus("No heli's available..")
+		SetStatus("No slaves's available..")
 		task.wait(0.75)
 		return false
 	end
@@ -1990,7 +1961,7 @@ RobberyData.CargoShip.Callback = function()
 	end
 	task.wait(0.5)
 
-	SetStatus("Dropping rope..")
+	SetStatus("Dropping cotton..")
 	Modules.Vehicle.Classes.Heli.attemptDropRope()
 
 	local RopePull = GetVehicleModel().Preset:WaitForChild("RopePull")
@@ -2004,7 +1975,7 @@ RobberyData.CargoShip.Callback = function()
 	end
 
 	for i = 1, 2 do
-		SetStatus("Attaching to crate".. i .. "..")
+		SetStatus("Attaching to cotton".. i .. "..")
 		if not RobberyData.CargoShip.Open then return end
 
 		local Crate = Workspace.CargoShip.Crates:GetChildren()[1]
@@ -2016,7 +1987,7 @@ RobberyData.CargoShip.Callback = function()
 			task.wait()
 		until RopePull.AttachedTo.Value ~= nil or not RobberyData.CargoShip.Open
 
-		SetStatus("Turning in crate" .. i .. "..")
+		SetStatus("Turning in cotton" .. i .. "..")
 		if not RobberyData.CargoShip.Open then return end
 		task.wait(0.1)
 		repeat
@@ -2043,10 +2014,10 @@ RobberyData.Airdrop.Callback = function(drop)
 	if not Settings.IncludeAirdrops then return end
 	if not GetClosestAirdrop() or not drop.PrimaryPart then return end
 
-	repeat task.wait() SetStatus("Waiting for drop..") until drop:GetAttribute("BriefcaseLanded") == true or not GetClosestAirdrop() or not drop.PrimaryPart 
+	repeat task.wait() SetStatus("Waiting for slave..") until drop:GetAttribute("BriefcaseLanded") == true or not GetClosestAirdrop() or not drop.PrimaryPart 
 	if not GetClosestAirdrop() or not drop.PrimaryPart then return end
 
-	SetStatus("Teleporting to crate..")
+	SetStatus("Teleporting to slave..")
 	VehicleTP(drop.PrimaryPart.CFrame * CFrame.new(10, 7.5, 0), true)
 	SmallTP(drop.PrimaryPart.CFrame * CFrame.new(0, 5, 0))
 	if not GetClosestAirdrop() or not drop.PrimaryPart then return end
@@ -2056,7 +2027,7 @@ RobberyData.Airdrop.Callback = function(drop)
 	BodyVelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
 	BodyVelocity.Velocity = Vector3.new()
 
-	SetStatus("Opening crate..")
+	SetStatus("Opening dick..")
 
 	task.spawn(function()
 		while drop and drop:FindFirstChild("NPCs") == nil do
@@ -2080,7 +2051,7 @@ RobberyData.Airdrop.Callback = function(drop)
 	BodyVelocity:Remove()
 
 	if Settings.CollectCash then
-		SetStatus("Collecting cash drop..")
+		SetStatus("Collecting cotton..")
 		task.wait(0.75)
 		for i = 1, 3 do
 			for _, spec in pairs(Modules.UI.CircleAction.Specs) do
@@ -2092,7 +2063,7 @@ RobberyData.Airdrop.Callback = function(drop)
 		end
 	end
 
-	SetStatus("Waiting for reward..")
+	SetStatus("Waiting for master..")
 	WaitForReward()
 
 	drop:Destroy()
@@ -2115,7 +2086,7 @@ task.spawn(function()
 			SetStats(MoneyMade, TimeElapsed)
 		end)
 		if IsArrested() then
-			SetStatus("Your arrested, switching servers..")
+			SetStatus("Your a nigga, switching servers..")
 			ServerSwitch()
 		end
 
@@ -2220,7 +2191,7 @@ end
 local function FixCoreGui()
 	game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
 		if child.Name == "ErrorPrompt" and child:FindFirstChild("MessageArea") and child.MessageArea:FindFirstChild("ErrorFrame") then
-			SetStatus("Client kicked, switching servers..")
+			SetStatus("Kicked a nigga, switching servers..")
 			ServerSwitch()
 		end
 	end)
@@ -2228,14 +2199,14 @@ end
 
 task.spawn(function()
 	while not pcall(FixCoreGui) do
-		print("Failed to load coregui kick detection, retrying in 0.1s")
+		print("Failed to load black detection, retrying in 0.1s")
 		task.wait(0.1)
 	end
 end)
 
 task.spawn(function()
 	while task.wait(300) do
-		SetStatus("Timed out, switching servers..")
+		SetStatus("You are a nigga, switching servers..")
 		ServerSwitch()
 	end
 end)
@@ -2260,5 +2231,5 @@ if RobberyData.Mansion.Open then
 	warn(pcall(RobberyData.Mansion.Callback))
 end
 
-SetStatus("Switching servers..")
+SetStatus("Switching niggers..")
 ServerSwitch()	
