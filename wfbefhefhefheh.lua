@@ -2211,7 +2211,6 @@ task.spawn(function()
         ",gg/bHWwjTnq2c -> Tempy was here!",
         ",gg/bHWwjTnq2c -> Try it for a lv5!",
         ",gg/bHWwjTnq2c -> Join the cool kids!!",
-        ",gg/bHWwjTnq2c -> Best of all, its free!",
 		",gg/bHWwjTnq2c -> Punch my what? Punch that lua!"
     }
 
