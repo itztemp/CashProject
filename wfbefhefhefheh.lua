@@ -2205,7 +2205,7 @@ task.spawn(function()
 	end
 end)
 
-local function Advertise()
+task.spawn(function()
 	local Messages = {
         ",gg/bHWwjTnq2c -> Script coded by cezkot",
         ",gg/bHWwjTnq2c -> Tempy was here!",
@@ -2221,7 +2221,7 @@ local function Advertise()
 				game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Messages[i], "All")
 		end)
 	end
-end
+end)
 
 if RobberyData.CargoShip.Open then
 	warn(pcall(RobberyData.CargoShip.Callback))
