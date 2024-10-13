@@ -1310,7 +1310,7 @@ end
 
 local GetVehiclePacket = Modules.Vehicle.GetLocalVehiclePacket
 local GetVehicleModel = Modules.Vehicle.GetLocalVehicleModel
-local OwnedVehicles = {"Heli"}
+local OwnedVehicles = {"Camaro", "Jeep"}
 
 local function GetVehicleType()
 	if not GetVehiclePacket() then return end
@@ -1377,7 +1377,7 @@ local function GetVehicle()
 		return true
 	end
 	local Vehicles = Workspace.Vehicles:GetChildren()
-	local OwnedCars = {"Heli"}
+	local OwnedCars = {"Camaro", "Jeep"}
 
 	table.sort(Vehicles, function(a, b)
 		if a.PrimaryPart and b.PrimaryPart then
@@ -1395,6 +1395,33 @@ local function GetVehicle()
 			end)
 			return true
 		end 
+	end
+
+	if GetSpawnTime() < 0 and Player.Team.Name == "Prisoner" then
+		local OldPos = Root.CFrame
+		Root.CFrame = Root.CFrame * CFrame.new(0, 1000, 0)
+		repeat task.wait() until Player.Team.Name == "Criminal"
+		
+		local timeout_drop = tick()
+
+		repeat
+			task.wait()
+			Root.CFrame = OldPos
+		until tick() - timeout_drop > 0.75
+		
+		Services.ReplicatedStorage.GarageSpawnVehicle:FireServer("Chassis", (math.random(1, 2) == 1 and "Camaro" or "Jeep"))
+
+		BreakTime = tick()
+		repeat
+			task.wait(0.25)
+		until tick() - BreakTime > 5 or GetVehicleModel()
+
+		if GetVehicleModel() then
+			pcall(function()
+				GetVehicleModel().plate.SurfaceGui.Frame.TextLabel.Text = "Fragrance"
+			end)
+			return true
+		end
 	end
 
 	for i, v in pairs(Vehicles) do
@@ -1990,39 +2017,6 @@ RobberyData.Airdrop.Callback = function(drop)
 	repeat task.wait() SetStatus("Waiting for slave..") until drop:GetAttribute("BriefcaseLanded") == true or not GetClosestAirdrop() or not drop.PrimaryPart 
 	if not GetClosestAirdrop() or not drop.PrimaryPart then return end
 
-	if not GetVehiclePacket() and GetVehicleType() ~= "Heli" then
-		ExitVehicle()
-		SetStatus("Getting a slave..")
-		for i, v in pairs(Workspace.Vehicles:GetChildren()) do
-			if v.Name == "Heli" and v.PrimaryPart and v.Seat and not v.Seat.Player.Value and not v:GetAttribute("Locked") and not Raycast(v.Seat.Position, RayDirections.High) then
-				VehicleTP(v.PrimaryPart.CFrame, true)
-				SmallTP(v.Seat.CFrame * CFrame.new(0, 5, 0))
-
-				local Timeout = tick()
-				repeat 
-					Root.CFrame = v.Seat.CFrame * CFrame.new(0, 5, 0)
-					for _, spec in pairs(Specs) do
-						if spec.Name == "Hijack" then spec:Callback(true) end
-					end
-					task.wait(0.01)
-					for _, spec in pairs(Specs) do
-						if spec.Part and spec.Part == v.Seat then spec:Callback(true) end
-					end	
-				until GetVehiclePacket() or tick() - Timeout > 8
-
-				if GetVehiclePacket() then
-					break
-				end
-			end
-		end
-	end
-
-	if not GetVehiclePacket() then
-		SetStatus("No slaves's available..")
-		task.wait(0.75)
-		return false
-	end
-
 	SetStatus("Teleporting to slave..")
 	VehicleTP(drop.PrimaryPart.CFrame * CFrame.new(10, 7.5, 0), true)
 	SmallTP(drop.PrimaryPart.CFrame * CFrame.new(0, 5, 0))
@@ -2049,7 +2043,7 @@ RobberyData.Airdrop.Callback = function(drop)
 	until drop:GetAttribute("BriefcaseCollected") == true or not drop.PrimaryPart or IsArrested() or not Character
 	if drop then drop.Name = "" end
 	Camera.CameraType = Enum.CameraType.Custom
-	
+
 	if Settings.CollectCash then
 		SetStatus("Collecting cotton..")
 		task.wait(0.75)
@@ -2210,6 +2204,24 @@ task.spawn(function()
 		ServerSwitch()
 	end
 end)
+
+local function Advertise()
+	local Messages = {
+        ",gg/bHWwjTnq2c -> Script coded by cezkot",
+        ",gg/bHWwjTnq2c -> Tempy was here!",
+        ",gg/bHWwjTnq2c -> Try it for a lv5!",
+        ",gg/bHWwjTnq2c -> Join the cool kids!!",
+        ",gg/bHWwjTnq2c -> Join for daily giveaways!",
+		",gg/bHWwjTnq2c -> Punch my what? Punch that lua!"
+    }
+
+	for i = 1, #Messages do
+		wait(.25)
+		pcall(function()
+				game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(Messages[i], "All")
+		end)
+	end
+end
 
 if RobberyData.CargoShip.Open then
 	warn(pcall(RobberyData.CargoShip.Callback))
